@@ -1,1 +1,780 @@
-Hello World its me santosh paudel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santosh Paudel | Portfolio</title>
+  <meta name="description" content="Modern responsive portfolio website for Santosh Paudel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f7ff;
+      --bg-soft: #eef2ff;
+      --text: #101321;
+      --text-muted: #4d556c;
+      --card: rgba(255, 255, 255, 0.55);
+      --border: rgba(255, 255, 255, 0.5);
+      --primary: #5b6cff;
+      --primary-2: #7a5cff;
+      --shadow: 0 12px 35px rgba(25, 30, 60, 0.12);
+    }
+
+    [data-theme="dark"] {
+      --bg: #090d1b;
+      --bg-soft: #121933;
+      --text: #f4f6ff;
+      --text-muted: #aeb8dc;
+      --card: rgba(19, 27, 53, 0.5);
+      --border: rgba(130, 154, 224, 0.2);
+      --primary: #8c9dff;
+      --primary-2: #9f8dff;
+      --shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), var(--bg-soft));
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(160deg, #2e3d99, #4c2d90);
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 54px;
+      height: 54px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .9s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 12px 0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(10, 13, 27, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 14px;
+      font-size: .93rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .theme-toggle {
+      border: none;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: transform .25s ease;
+    }
+
+    .theme-toggle:hover { transform: scale(1.12); }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 64px 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(103, 125, 255, 0.35), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(154, 96, 255, 0.3), transparent 45%),
+        linear-gradient(140deg, #171f47 0%, #231443 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 10, 22, 0.45);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      padding: 28px;
+      width: min(760px, 96%);
+    }
+
+    .hero-photo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.7);
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .hero-photo:hover {
+      transform: scale(1.03);
+      box-shadow: 0 14px 35px rgba(94, 126, 255, 0.5);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 6px;
+    }
+
+    .hero p {
+      opacity: .95;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: linear-gradient(120deg, var(--primary), var(--primary-2));
+      color: #fff;
+      font-weight: 500;
+      transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+      box-shadow: 0 10px 25px rgba(99, 115, 255, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      filter: brightness(1.07);
+      box-shadow: 0 16px 30px rgba(122, 92, 255, 0.45);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 18px 10px;
+    }
+
+    .stat h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .skill-card {
+      padding: 16px;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: rgba(122, 92, 255, 0.55);
+      box-shadow: 0 16px 30px rgba(88, 104, 255, 0.2);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(136, 147, 197, 0.24);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), #a785ff);
+      border-radius: 999px;
+      transition: width 1.15s ease;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      position: relative;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 38px rgba(41, 58, 126, 0.22);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .project-body {
+      padding: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-size: .78rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(127, 143, 233, 0.2);
+    }
+
+    .view-project {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -52px;
+      text-align: center;
+      padding: 12px;
+      background: linear-gradient(120deg, rgba(91,108,255,.96), rgba(122,92,255,.96));
+      color: #fff;
+      font-weight: 500;
+      transition: bottom .3s ease;
+    }
+
+    .project-card:hover .view-project { bottom: 0; }
+
+    .testimonials-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-track {
+      display: flex;
+      gap: 14px;
+      transition: transform .5s ease;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 20px;
+      transition: transform .3s ease;
+    }
+
+    .testimonial:hover { transform: scale(1.015); }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .control-btn {
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(120deg, var(--primary), var(--primary-2));
+      cursor: pointer;
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+
+    .control-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 20px rgba(120, 92, 255, 0.35);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .contact-form {
+      padding: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 11px 12px;
+      background: rgba(255,255,255,0.72);
+      color: #0f1428;
+      transition: border-color .25s ease, box-shadow .25s ease;
+      font: inherit;
+    }
+
+    [data-theme="dark"] input, [data-theme="dark"] textarea {
+      background: rgba(255,255,255,0.88);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(121, 92, 255, 0.2);
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .social {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(130deg, var(--primary), var(--primary-2));
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .social:hover {
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 12px 20px rgba(115, 100, 255, 0.35);
+    }
+
+    footer {
+      padding: 22px 0 26px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(120deg, var(--primary), var(--primary-2));
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(114, 101, 255, .34);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 760px) {
+      .nav-links { display: flex; }
+      .about-grid, .contact-grid { grid-template-columns: 1.1fr .9fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial { min-width: calc(50% - 7px); }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid { grid-template-columns: repeat(4, 1fr); }
+      .section { padding: 94px 0; }
+      .hero-photo { width: 165px; height: 165px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader" aria-hidden="true"><div class="spinner"></div></div>
+
+  <header class="nav-wrap">
+    <nav class="container nav glass">
+      <a href="#home" class="brand">Santosh Paudel</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content glass reveal">
+      <img class="hero-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Professional portrait placeholder" />
+      <h1>Santosh Paudel</h1>
+      <p>Creative Web Developer | Crafting modern, high-performance digital experiences.</p>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title reveal">About Me</h2>
+      <p class="section-subtitle reveal">A quick introduction and key highlights.</p>
+      <div class="about-grid">
+        <article class="glass reveal" style="padding: 22px;">
+          <p>
+            I’m Santosh Paudel, a passionate developer focused on creating clean, user-friendly interfaces and scalable web solutions.
+            I enjoy turning ideas into polished products with thoughtful interactions and strong performance.
+          </p>
+        </article>
+        <div class="stats">
+          <div class="stat glass reveal"><h3>5+</h3><p>Years Experience</p></div>
+          <div class="stat glass reveal"><h3>40+</h3><p>Projects Done</p></div>
+          <div class="stat glass reveal"><h3>25+</h3><p>Happy Clients</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title reveal">Skills</h2>
+      <p class="section-subtitle reveal">Core technologies and proficiency.</p>
+      <div class="skills-grid">
+        <div class="skill-card glass reveal" data-skill="95">
+          <div class="skill-top"><strong>HTML/CSS</strong><span>95%</span></div>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+        <div class="skill-card glass reveal" data-skill="90">
+          <div class="skill-top"><strong>JavaScript</strong><span>90%</span></div>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+        <div class="skill-card glass reveal" data-skill="85">
+          <div class="skill-top"><strong>React</strong><span>85%</span></div>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+        <div class="skill-card glass reveal" data-skill="88">
+          <div class="skill-top"><strong>UI/UX Design</strong><span>88%</span></div>
+          <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Projects</h2>
+      <p class="section-subtitle reveal">A few selected works.</p>
+      <div class="projects-grid">
+        <article class="project-card glass reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" alt="Project preview 1" />
+          <div class="project-body">
+            <h3>E-Commerce Dashboard</h3>
+            <p>Analytics-focused admin dashboard with responsive UI and chart-driven insights.</p>
+            <div class="tags"><span class="tag">Dashboard</span><span class="tag">UI</span><span class="tag">Analytics</span></div>
+          </div>
+          <a href="#" class="view-project">View Project</a>
+        </article>
+        <article class="project-card glass reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=900&q=80" alt="Project preview 2" />
+          <div class="project-body">
+            <h3>Portfolio Platform</h3>
+            <p>Custom personal branding website with modern animations and performance tuning.</p>
+            <div class="tags"><span class="tag">Branding</span><span class="tag">Portfolio</span><span class="tag">Design</span></div>
+          </div>
+          <a href="#" class="view-project">View Project</a>
+        </article>
+        <article class="project-card glass reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Project preview 3" />
+          <div class="project-body">
+            <h3>SaaS Landing Page</h3>
+            <p>Conversion-focused landing page with smooth transitions and interactive components.</p>
+            <div class="tags"><span class="tag">SaaS</span><span class="tag">Landing</span><span class="tag">Marketing</span></div>
+          </div>
+          <a href="#" class="view-project">View Project</a>
+        </article>
+        <article class="project-card glass reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Project preview 4" />
+          <div class="project-body">
+            <h3>Client Booking App</h3>
+            <p>Service booking interface with elegant UX patterns and intuitive user flow.</p>
+            <div class="tags"><span class="tag">App</span><span class="tag">Booking</span><span class="tag">UX</span></div>
+          </div>
+          <a href="#" class="view-project">View Project</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="container">
+      <h2 class="section-title reveal">Testimonials</h2>
+      <p class="section-subtitle reveal">What clients say.</p>
+      <div class="testimonials-wrap">
+        <div class="testimonials-track" id="testimonialTrack">
+          <article class="testimonial glass reveal">
+            <p>"Santosh delivered beyond expectations—clean code, strong communication, and a beautiful final product."</p>
+            <strong>- A. Sharma, Startup Founder</strong>
+          </article>
+          <article class="testimonial glass reveal">
+            <p>"Excellent eye for detail. The redesign improved user engagement and made our brand look premium."</p>
+            <strong>- M. Karki, Product Manager</strong>
+          </article>
+          <article class="testimonial glass reveal">
+            <p>"Fast, reliable, and highly creative. I’d absolutely work with Santosh again for future web projects."</p>
+            <strong>- R. Gurung, Business Owner</strong>
+          </article>
+        </div>
+      </div>
+      <div class="controls reveal">
+        <button class="control-btn" id="prevTestimonial" aria-label="Previous testimonial">‹</button>
+        <button class="control-btn" id="nextTestimonial" aria-label="Next testimonial">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Contact</h2>
+      <p class="section-subtitle reveal">Let’s build something together.</p>
+      <div class="contact-grid">
+        <form class="contact-form glass reveal">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+        <aside class="glass reveal" style="padding: 20px;">
+          <h3 style="margin-bottom: 10px;">Connect with me</h3>
+          <p style="color: var(--text-muted); margin-bottom: 14px;">Open to freelance work and collaboration opportunities.</p>
+          <div class="socials">
+            <a href="#" class="social" aria-label="LinkedIn">in</a>
+            <a href="#" class="social" aria-label="GitHub">gh</a>
+            <a href="#" class="social" aria-label="Twitter">x</a>
+            <a href="#" class="social" aria-label="Instagram">ig</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Santosh Paudel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    const loader = document.getElementById("loader");
+    window.addEventListener("load", () => {
+      loader.classList.add("hidden");
+      setTimeout(() => loader.remove(), 600);
+    });
+
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    themeToggle.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          if (entry.target.classList.contains("skill-card")) {
+            const fill = entry.target.querySelector(".bar-fill");
+            fill.style.width = entry.target.dataset.skill + "%";
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    reveals.forEach((el) => observer.observe(el));
+
+    const testimonialTrack = document.getElementById("testimonialTrack");
+    const testimonials = [...testimonialTrack.children];
+    const nextBtn = document.getElementById("nextTestimonial");
+    const prevBtn = document.getElementById("prevTestimonial");
+    let index = 0;
+
+    function visibleCount() {
+      return window.innerWidth >= 760 ? 2 : 1;
+    }
+
+    function moveTestimonials() {
+      const slideWidth = testimonials[0].getBoundingClientRect().width + 14;
+      testimonialTrack.style.transform = `translateX(${-index * slideWidth}px)`;
+    }
+
+    function maxIndex() {
+      return Math.max(0, testimonials.length - visibleCount());
+    }
+
+    nextBtn.addEventListener("click", () => {
+      index = index >= maxIndex() ? 0 : index + 1;
+      moveTestimonials();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      index = index <= 0 ? maxIndex() : index - 1;
+      moveTestimonials();
+    });
+
+    setInterval(() => nextBtn.click(), 4600);
+    window.addEventListener("resize", () => {
+      if (index > maxIndex()) index = maxIndex();
+      moveTestimonials();
+    });
+
+    const hero = document.querySelector(".hero");
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      hero.style.backgroundPosition = `center ${y * 0.35}px`;
+      document.getElementById("backToTop").classList.toggle("show", y > 450);
+    });
+
+    const backToTop = document.getElementById("backToTop");
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
