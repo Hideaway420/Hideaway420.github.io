@@ -1,1 +1,1060 @@
-Hello World its me santosh paudel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Santosh Paudel - AI-powered digital marketing professional portfolio." />
+	<title>Santosh Paudel | Portfolio</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #08111f;
+			--bg-soft: #0e1a2e;
+			--panel: rgba(12, 21, 39, 0.72);
+			--panel-strong: rgba(16, 27, 48, 0.94);
+			--text: #edf3ff;
+			--muted: #9eb0cc;
+			--accent: #8cf0c5;
+			--accent-2: #7fb6ff;
+			--accent-3: #ffb36b;
+			--border: rgba(255, 255, 255, 0.1);
+			--shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+			--radius-xl: 34px;
+			--radius-lg: 24px;
+			--radius-md: 18px;
+			--max: 1180px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			font-family: "Manrope", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(circle at top left, rgba(127, 182, 255, 0.15), transparent 28%),
+				radial-gradient(circle at 80% 10%, rgba(140, 240, 197, 0.12), transparent 24%),
+				radial-gradient(circle at 70% 75%, rgba(255, 179, 107, 0.09), transparent 18%),
+				linear-gradient(180deg, #06101c 0%, #08111f 30%, #050b14 100%);
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+			background-size: 54px 54px;
+			mask-image: linear-gradient(180deg, rgba(0,0,0,0.55), transparent 92%);
+			opacity: 0.24;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.wrap {
+			width: min(calc(100% - 32px), var(--max));
+			margin: 0 auto;
+			position: relative;
+			z-index: 1;
+		}
+
+		.hero {
+			position: relative;
+			padding: 28px 0 90px;
+		}
+
+		.nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 16px;
+			padding: 18px 0 34px;
+		}
+
+		.brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			font-family: "Space Grotesk", sans-serif;
+			font-weight: 700;
+			letter-spacing: 0.02em;
+		}
+
+		.brand-mark {
+			width: 42px;
+			height: 42px;
+			border-radius: 14px;
+			display: grid;
+			place-items: center;
+			background: linear-gradient(135deg, rgba(140, 240, 197, 0.95), rgba(127, 182, 255, 0.9));
+			color: #06101c;
+			box-shadow: 0 16px 32px rgba(127, 182, 255, 0.22);
+			font-weight: 800;
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 18px;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			color: var(--muted);
+			font-size: 0.96rem;
+		}
+
+		.nav-links a {
+			padding: 10px 14px;
+			border-radius: 999px;
+			transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+		}
+
+		.nav-links a:hover {
+			color: var(--text);
+			background: rgba(255, 255, 255, 0.06);
+			transform: translateY(-1px);
+		}
+
+		.hero-grid {
+			display: grid;
+			grid-template-columns: 1.3fr 0.7fr;
+			gap: 24px;
+			align-items: stretch;
+		}
+
+		.headline,
+		.card,
+		.section,
+		.mini-card {
+			backdrop-filter: blur(20px);
+			background: linear-gradient(180deg, rgba(15, 25, 42, 0.9), rgba(9, 16, 28, 0.76));
+			border: 1px solid var(--border);
+			box-shadow: var(--shadow);
+		}
+
+		.headline {
+			position: relative;
+			overflow: hidden;
+			border-radius: var(--radius-xl);
+			padding: 34px;
+			min-height: 560px;
+			display: grid;
+			grid-template-rows: auto auto 1fr auto;
+			gap: 22px;
+		}
+
+		.headline::after {
+			content: "";
+			position: absolute;
+			width: 340px;
+			height: 340px;
+			border-radius: 50%;
+			right: -110px;
+			top: -120px;
+			background: radial-gradient(circle, rgba(140, 240, 197, 0.18), transparent 62%);
+			filter: blur(6px);
+			animation: float 10s ease-in-out infinite;
+		}
+
+		.headline::before {
+			content: "";
+			position: absolute;
+			inset: auto auto -160px -160px;
+			width: 420px;
+			height: 420px;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(127, 182, 255, 0.18), transparent 62%);
+			animation: float 13s ease-in-out infinite reverse;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			width: fit-content;
+			padding: 10px 14px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.06);
+			color: var(--muted);
+			font-size: 0.92rem;
+			letter-spacing: 0.02em;
+		}
+
+		.eyebrow span {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--accent);
+			box-shadow: 0 0 0 8px rgba(140, 240, 197, 0.12);
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-family: "Space Grotesk", sans-serif;
+			margin: 0;
+			line-height: 0.96;
+			letter-spacing: -0.04em;
+		}
+
+		h1 {
+			font-size: clamp(3rem, 8vw, 6.8rem);
+			max-width: 9ch;
+		}
+
+		.intro {
+			color: var(--muted);
+			font-size: clamp(1rem, 1.45vw, 1.15rem);
+			line-height: 1.8;
+			max-width: 64ch;
+			margin-top: 8px;
+		}
+
+		.hero-actions {
+			display: flex;
+			gap: 14px;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-top: 4px;
+		}
+
+		.button {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			border-radius: 999px;
+			padding: 14px 20px;
+			font-weight: 700;
+			border: 1px solid transparent;
+			transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+		}
+
+		.button:hover {
+			transform: translateY(-2px);
+		}
+
+		.button.primary {
+			color: #04111c;
+			background: linear-gradient(135deg, var(--accent), #b7f4dc);
+			box-shadow: 0 18px 35px rgba(140, 240, 197, 0.18);
+		}
+
+		.button.secondary {
+			background: rgba(255, 255, 255, 0.05);
+			border-color: rgba(255, 255, 255, 0.08);
+		}
+
+		.hero-meta {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 12px;
+			align-self: end;
+		}
+
+		.meta-chip {
+			padding: 16px 16px 18px;
+			border-radius: 22px;
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid rgba(255, 255, 255, 0.07);
+		}
+
+		.meta-chip strong {
+			display: block;
+			font-family: "Space Grotesk", sans-serif;
+			font-size: 1.05rem;
+			margin-bottom: 6px;
+		}
+
+		.meta-chip span {
+			color: var(--muted);
+			font-size: 0.93rem;
+			line-height: 1.5;
+		}
+
+		.side {
+			display: grid;
+			gap: 24px;
+		}
+
+		.card {
+			border-radius: var(--radius-xl);
+			padding: 24px;
+		}
+
+		.profile-card {
+			position: relative;
+			overflow: hidden;
+			display: grid;
+			gap: 20px;
+			align-content: start;
+		}
+
+		.avatar {
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			border-radius: 28px;
+			background:
+				radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.24), transparent 24%),
+				linear-gradient(160deg, rgba(127, 182, 255, 0.95), rgba(140, 240, 197, 0.84) 50%, rgba(255, 179, 107, 0.76));
+			display: grid;
+			place-items: end start;
+			padding: 22px;
+			color: #06101c;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.avatar::after {
+			content: "";
+			position: absolute;
+			inset: 18px;
+			border-radius: 22px;
+			border: 1px solid rgba(6, 16, 28, 0.12);
+		}
+
+		.avatar b {
+			font-family: "Space Grotesk", sans-serif;
+			font-size: clamp(3rem, 8vw, 5.2rem);
+			line-height: 0.9;
+			letter-spacing: -0.08em;
+			max-width: 5ch;
+		}
+
+		.avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 18px;
+			display: block;
+		}
+
+		.contact-list {
+			display: grid;
+			gap: 12px;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 14px 15px;
+			border-radius: 16px;
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid rgba(255, 255, 255, 0.06);
+			color: var(--muted);
+			transition: transform 180ms ease, background 180ms ease;
+		}
+
+		.contact-item:hover {
+			transform: translateY(-2px);
+			background: rgba(255, 255, 255, 0.06);
+		}
+
+		.contact-item strong {
+			color: var(--text);
+			display: block;
+			margin-bottom: 2px;
+			font-size: 0.94rem;
+		}
+
+		.contact-icon {
+			width: 40px;
+			height: 40px;
+			border-radius: 14px;
+			display: grid;
+			place-items: center;
+			background: rgba(255, 255, 255, 0.08);
+			color: var(--accent);
+			flex-shrink: 0;
+		}
+
+		.section {
+			margin-top: 24px;
+			border-radius: var(--radius-xl);
+			padding: 28px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.section-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: end;
+			gap: 18px;
+			margin-bottom: 24px;
+		}
+
+		.section-head p {
+			max-width: 60ch;
+			margin: 0;
+			color: var(--muted);
+			line-height: 1.7;
+		}
+
+		.section h2 {
+			font-size: clamp(2rem, 4vw, 3.2rem);
+			margin-bottom: 6px;
+		}
+
+		.grid-3 {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		.stat,
+		.skill,
+		.timeline-item,
+		.edu-item {
+			border-radius: var(--radius-md);
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid rgba(255, 255, 255, 0.06);
+		}
+
+		.stat {
+			padding: 18px;
+		}
+
+		.stat strong {
+			display: block;
+			font-family: "Space Grotesk", sans-serif;
+			font-size: 1.1rem;
+			margin-bottom: 6px;
+		}
+
+		.stat p,
+		.skill span,
+		.timeline-item p,
+		.edu-item p {
+			margin: 0;
+			color: var(--muted);
+			line-height: 1.65;
+		}
+
+		.timeline {
+			display: grid;
+			gap: 14px;
+		}
+
+		.timeline-item {
+			padding: 20px;
+			display: grid;
+			gap: 10px;
+		}
+
+		.timeline-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: start;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+
+		.timeline-top h3 {
+			font-size: 1.35rem;
+		}
+
+		.timeline-top .role {
+			color: var(--accent);
+			font-weight: 700;
+		}
+
+		.timeline-top .date {
+			color: var(--muted);
+			font-size: 0.94rem;
+			white-space: nowrap;
+		}
+
+		.bullets {
+			display: grid;
+			gap: 10px;
+			padding-left: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		.bullets li {
+			position: relative;
+			padding-left: 18px;
+			color: var(--muted);
+			line-height: 1.7;
+		}
+
+		.bullets li::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0.7em;
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: var(--accent-2);
+			box-shadow: 0 0 0 5px rgba(127, 182, 255, 0.12);
+		}
+
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.skill {
+			padding: 18px;
+		}
+
+		.skill strong {
+			display: block;
+			margin-bottom: 8px;
+			font-size: 1rem;
+			font-family: "Space Grotesk", sans-serif;
+		}
+
+		.tag-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		.tag {
+			padding: 10px 14px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.06);
+			color: var(--text);
+			border: 1px solid rgba(255, 255, 255, 0.07);
+			font-size: 0.93rem;
+		}
+
+		.edu-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.edu-item {
+			padding: 18px;
+		}
+
+		.edu-item strong {
+			display: block;
+			font-size: 1.08rem;
+			margin-bottom: 6px;
+			font-family: "Space Grotesk", sans-serif;
+		}
+
+		.cta {
+			display: grid;
+			grid-template-columns: 1.15fr 0.85fr;
+			gap: 16px;
+		}
+
+		.cta-card {
+			border-radius: var(--radius-lg);
+			padding: 24px;
+			border: 1px solid rgba(255, 255, 255, 0.07);
+			background: linear-gradient(135deg, rgba(140, 240, 197, 0.12), rgba(127, 182, 255, 0.09));
+		}
+
+		.cta-card p {
+			margin: 10px 0 0;
+			color: var(--muted);
+			line-height: 1.7;
+		}
+
+		.cta-card .button {
+			margin-top: 18px;
+		}
+
+		.marquee {
+			overflow: hidden;
+			white-space: nowrap;
+			border-top: 1px solid rgba(255, 255, 255, 0.06);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+			background: rgba(255, 255, 255, 0.02);
+			margin-top: 24px;
+		}
+
+		.marquee-track {
+			display: inline-flex;
+			gap: 28px;
+			padding: 14px 0;
+			animation: slide 24s linear infinite;
+			color: var(--muted);
+		}
+
+		.marquee-track span {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.marquee-track span::before {
+			content: "";
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: var(--accent-3);
+			box-shadow: 0 0 0 5px rgba(255, 179, 107, 0.08);
+		}
+
+		.reveal {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity 700ms ease, transform 700ms ease;
+		}
+
+		.reveal.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.footer {
+			padding: 28px 0 44px;
+			color: var(--muted);
+			text-align: center;
+			font-size: 0.95rem;
+		}
+
+		@keyframes float {
+			0%, 100% {
+				transform: translateY(0) scale(1);
+			}
+			50% {
+				transform: translateY(14px) scale(1.04);
+			}
+		}
+
+		@keyframes slide {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(-50%);
+			}
+		}
+
+		@media (max-width: 980px) {
+			.hero-grid,
+			.cta,
+			.grid-3,
+			.skills-grid,
+			.edu-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.headline {
+				min-height: auto;
+			}
+
+			.section-head {
+				flex-direction: column;
+				align-items: start;
+			}
+
+			.hero-meta {
+				grid-template-columns: 1fr;
+			}
+
+			.nav {
+				flex-direction: column;
+				align-items: start;
+			}
+
+			.nav-links {
+				justify-content: start;
+			}
+		}
+
+		@media (max-width: 640px) {
+			.wrap {
+				width: min(calc(100% - 20px), var(--max));
+			}
+
+			.hero {
+				padding-top: 16px;
+			}
+
+			.headline,
+			.card,
+			.section {
+				padding: 20px;
+			}
+
+			h1 {
+				max-width: none;
+			}
+
+			.button {
+				width: 100%;
+				justify-content: center;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="wrap">
+		<section class="hero">
+			<nav class="nav">
+				<a class="brand" href="#top">
+					<span class="brand-mark">SP</span>
+					<span>Santosh Paudel</span>
+				</a>
+				<div class="nav-links">
+					<a href="#about">About</a>
+					<a href="#experience">Experience</a>
+					<a href="#skills">Skills</a>
+					<a href="#projects">Projects</a>
+					  <a href="#contact">Contact</a>
+					  <a href="https://www.linkedin.com/in/santoshpaudel7211" target="_blank" rel="noreferrer">LinkedIn</a>
+					<a class="button secondary" href="Santosh_Paudel_CV.txt" download>Download CV</a>
+				</div>
+			</nav>
+
+			<div class="hero-grid">
+				<article class="headline reveal" id="top">
+					<div class="eyebrow"><span></span> Kathmandu-based digital marketing strategist</div>
+					<div>
+						<h1>AI-led marketing with sharp execution.</h1>
+						<p class="intro">
+							Santosh Paudel is an AI-powered, data-driven digital marketing professional focused on SEO, content systems,
+							campaign strategy, and brand growth. He blends analytics, creative direction, and automation to build marketing
+							that performs across channels.
+						</p>
+					</div>
+					<div class="hero-actions">
+						<a class="button primary" href="mailto:hideaway.sp@gmail.com">Start a conversation</a>
+						<a class="button secondary" href="https://www.linkedin.com/in/santoshpaudel7211" target="_blank" rel="noreferrer">View LinkedIn</a>
+					</div>
+					<div class="hero-meta">
+						<div class="meta-chip">
+							<strong>SEO + Content</strong>
+							<span>On-page optimization, keyword research, WordPress publishing, and organic growth workflows.</span>
+						</div>
+						<div class="meta-chip">
+							<strong>Paid + Social</strong>
+							<span>Ad copy, lead generation, social strategy, and campaign execution with measurable intent.</span>
+						</div>
+						<div class="meta-chip">
+							<strong>AI + Analytics</strong>
+							<span>Uses ChatGPT, Gemini, GA, and dashboard tools to speed up decisions and improve output quality.</span>
+						</div>
+					</div>
+				</article>
+
+				<aside class="side reveal">
+					<div class="card profile-card">
+						<div class="avatar">
+							<img src="assets/avatar.svg" alt="Santosh Paudel">
+						</div>
+						<div class="contact-list">
+							<a class="contact-item" href="tel:+9779813533006">
+								<span class="contact-icon">☎</span>
+								<span><strong>Phone</strong>+977-9813533006</span>
+							</a>
+							<a class="contact-item" href="mailto:hideaway.sp@gmail.com">
+								<span class="contact-icon">@</span>
+								<span><strong>Email</strong>hideaway.sp@gmail.com</span>
+							</a>
+							<a class="contact-item" href="https://www.linkedin.com/in/santoshpaudel7211" target="_blank" rel="noreferrer">
+								<span class="contact-icon">in</span>
+								<span><strong>LinkedIn</strong>linkedin.com/in/santoshpaudel7211</span>
+							</a>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<section class="section reveal" id="about">
+			<div class="section-head">
+				<div>
+					<h2>Professional Summary</h2>
+					<p>Clear positioning for a modern marketing portfolio with an emphasis on strategy, AI tools, and measurable execution.</p>
+				</div>
+			</div>
+			<div class="grid-3">
+				<div class="stat">
+					<strong>Data-driven marketer</strong>
+					<p>Focuses on analytics-backed campaign decisions instead of guesswork.</p>
+				</div>
+				<div class="stat">
+					<strong>AI workflow builder</strong>
+					<p>Uses AI to accelerate ideation, content, optimization, and repetitive tasks.</p>
+				</div>
+				<div class="stat">
+					<strong>Growth-oriented thinker</strong>
+					<p>Builds acquisition and retention systems for sustainable brand growth.</p>
+				</div>
+			</div>
+			<div class="marquee">
+				<div class="marquee-track" aria-hidden="true">
+					<span>SEO / SEM</span>
+					<span>Content Marketing</span>
+					<span>Social Media Strategy</span>
+					<span>Email Marketing</span>
+					<span>Lead Generation</span>
+					<span>WordPress</span>
+					<span>Google Analytics</span>
+					<span>AI Copywriting</span>
+					<span>Campaign Management</span>
+					<span>SEO / SEM</span>
+					<span>Content Marketing</span>
+					<span>Social Media Strategy</span>
+					<span>Email Marketing</span>
+					<span>Lead Generation</span>
+					<span>WordPress</span>
+					<span>Google Analytics</span>
+					<span>AI Copywriting</span>
+					<span>Campaign Management</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="section reveal" id="experience">
+			<div class="section-head">
+				<div>
+					<h2>Experience</h2>
+					<p>A focused timeline built from your CV, rewritten for a portfolio feel while keeping the original roles and responsibilities.</p>
+				</div>
+			</div>
+
+			<div class="timeline">
+				<article class="timeline-item">
+					<div class="timeline-top">
+						<div>
+							<div class="role">Marketer</div>
+							<h3>Accrivo Advisors Pvt. Ltd.</h3>
+						</div>
+						<div class="date">December 2025 - February 2026 · Kathmandu, Nepal</div>
+					</div>
+					<ul class="bullets">
+						<li>Led marketing activities and promotional campaigns to support business development and client acquisition initiatives.</li>
+						<li>Managed client communication and relationship building to improve satisfaction and retention.</li>
+						<li>Developed targeted strategies aligned with company objectives and market opportunities.</li>
+						<li>Collaborated across teams to maintain consistent brand messaging.</li>
+					</ul>
+				</article>
+
+				<article class="timeline-item">
+					<div class="timeline-top">
+						<div>
+							<div class="role">Creative Strategist</div>
+							<h3>D20 Labs Creative Agency</h3>
+						</div>
+						<div class="date">August 2025 - October 2025 · Kathmandu, Nepal</div>
+					</div>
+					<ul class="bullets">
+						<li>Developed content strategies aligned with audience insights and business goals.</li>
+						<li>Conducted market research and competitive analysis to inform positioning.</li>
+						<li>Created social strategies and creative concepts to strengthen visibility and engagement.</li>
+						<li>Translated research into actionable brand and campaign recommendations.</li>
+					</ul>
+				</article>
+
+				<article class="timeline-item">
+					<div class="timeline-top">
+						<div>
+							<div class="role">Digital Marketing Assistant</div>
+							<h3>RockFeed Pvt. Ltd.</h3>
+						</div>
+						<div class="date">February 2025 - July 2025 · Surkhet, Nepal</div>
+					</div>
+					<ul class="bullets">
+						<li>Executed on-page and off-page SEO, including keyword research and visibility optimization.</li>
+						<li>Created and managed WordPress sites and content that drove organic traffic.</li>
+						<li>Developed content monetization workflows and faceless content systems.</li>
+						<li>Designed paid ad campaigns, ad copy, and lead generation approaches.</li>
+						<li>Used ChatGPT and Gemini to improve content creation and performance workflows.</li>
+					</ul>
+				</article>
+
+				<article class="timeline-item">
+					<div class="timeline-top">
+						<div>
+							<div class="role">Assistant Manager</div>
+							<h3>Tuu Khana Food Delivery Service</h3>
+						</div>
+						<div class="date">March 2024 - December 2024 · Surkhet, Nepal</div>
+					</div>
+					<ul class="bullets">
+						<li>Supported operational management and customer service initiatives.</li>
+						<li>Coordinated marketing efforts to grow visibility and customer base in a competitive delivery market.</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section class="section reveal" id="skills">
+			<div class="section-head">
+				<div>
+					<h2>Skills</h2>
+					<p>Organized into practical capability groups so recruiters and clients can scan the page fast.</p>
+				</div>
+			</div>
+
+			<div class="skills-grid">
+				<div class="skill">
+					<strong>Digital Marketing</strong>
+					<div class="tag-row">
+						<span class="tag">SEO / SEM</span>
+						<span class="tag">Content Marketing</span>
+						<span class="tag">Social Media Marketing</span>
+						<span class="tag">Email Marketing</span>
+						<span class="tag">Affiliate Marketing</span>
+					</div>
+				</div>
+				<div class="skill">
+					<strong>Analytics & Tools</strong>
+					<div class="tag-row">
+						<span class="tag">Google Analytics</span>
+						<span class="tag">Google Data Studio</span>
+						<span class="tag">Facebook Ads Manager</span>
+						<span class="tag">Meta Business Suite</span>
+					</div>
+				</div>
+				<div class="skill">
+					<strong>SEO Tools</strong>
+					<div class="tag-row">
+						<span class="tag">Ahrefs</span>
+						<span class="tag">SEMrush</span>
+						<span class="tag">Moz</span>
+						<span class="tag">Keyword Research</span>
+						<span class="tag">On-page Optimization</span>
+						<span class="tag">Off-page Optimization</span>
+					</div>
+				</div>
+				<div class="skill">
+					<strong>AI & Content</strong>
+					<div class="tag-row">
+						<span class="tag">ChatGPT</span>
+						<span class="tag">Gemini</span>
+						<span class="tag">Midjourney</span>
+						<span class="tag">Jasper</span>
+						<span class="tag">AI-Powered Marketing</span>
+						<span class="tag">Copywriting</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section reveal" id="projects">
+			<div class="section-head">
+				<div>
+					<h2>Selected Projects</h2>
+					<p>Practical campaigns and systems showcasing strategy, SEO, and AI-driven workflows.</p>
+				</div>
+			</div>
+
+			<div class="grid-3">
+				<div class="stat">
+					<img src="assets/project1.svg" alt="SEO growth system" style="width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:12px;">
+					<strong>SEO growth system</strong>
+					<p>Built a repeatable keyword discovery and content pipeline to improve organic performance and increase qualified traffic.</p>
+				</div>
+				<div class="stat">
+					<img src="assets/project2.svg" alt="Content monetization" style="width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:12px;">
+					<strong>Content monetization funnel</strong>
+					<p>Designed content sequences and distribution that supported audience growth and revenue paths across platforms.</p>
+				</div>
+				<div class="stat">
+					<img src="assets/project1.svg" alt="Paid lead generation" style="width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:12px;">
+					<strong>Paid lead generation</strong>
+					<p>Deployed paid campaigns and optimized ad copy, landing pages, and tracking to improve lead quality and CPL.</p>
+				</div>
+			</div>
+
+			<section class="section reveal" id="testimonials">
+				<div class="section-head">
+					<div>
+						<h2>Recommendations</h2>
+						<p>Short endorsements collected to show impact and collaboration style.</p>
+					</div>
+				</div>
+
+				<div class="timeline">
+					<div class="timeline-item">
+						<h3>"Delivered measurable outputs and moved our channel metrics."</h3>
+						<p class="bullets">— Colleague at previous engagement</p>
+					</div>
+					<div class="timeline-item">
+						<h3>"Takes a data-first approach and simplifies complex ideas into actionable plans."</h3>
+						<p class="bullets">— Project stakeholder</p>
+					</div>
+				</div>
+			</section>
+
+		<section class="section reveal" id="education">
+			<div class="section-head">
+				<div>
+					<h2>Education</h2>
+					<p>The education block is styled to feel premium while keeping the dates and institutions from your CV.</p>
+				</div>
+			</div>
+
+			<div class="edu-grid">
+				<div class="edu-item">
+					<strong>Master of Business Administration, Marketing and Advertising</strong>
+					<p>Islington College · February 2026 - Present · Kathmandu, Nepal</p>
+				</div>
+				<div class="edu-item">
+					<strong>Bachelor of Business Administration, Marketing</strong>
+					<p>Mid West University · August 2017 - July 2024 · Surkhet, Nepal</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section reveal" id="contact">
+			<div class="section-head">
+				<div>
+					<h2>Contact</h2>
+					<p>Ready for collaboration, marketing roles, or freelance strategy work.</p>
+				</div>
+			</div>
+
+			<div class="cta">
+				<div class="cta-card">
+					<h3>Build something measurable.</h3>
+					<p>
+						If you need someone who can combine creative strategy, SEO, AI workflows, and performance thinking,
+						Santosh is ready to talk.
+					</p>
+					<a class="button primary" href="mailto:hideaway.sp@gmail.com">Email Santosh</a>
+				</div>
+				<div class="cta-card">
+					<h3>Core focus</h3>
+					<p>
+						Digital marketing, content systems, paid campaigns, lead generation, and AI-assisted optimization.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<div class="footer">Santosh Paudel · Kathmandu, Nepal · Built as a high-motion portfolio landing page</div>
+	</main>
+
+	<script>
+		const elements = document.querySelectorAll('.reveal');
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.15 });
+
+		elements.forEach((element) => observer.observe(element));
+	</script>
+</body>
+</html>
